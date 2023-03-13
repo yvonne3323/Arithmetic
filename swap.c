@@ -3,9 +3,9 @@
 
 struct Stu
 {
-    int num;
-    char name[20];
-    double score;
+    char num[20];//学号
+    char name[20];//姓名
+    double score;//成绩
 };
 
 void swap(struct Stu *p1, struct Stu *p2)
@@ -18,16 +18,14 @@ void swap(struct Stu *p1, struct Stu *p2)
 
 int main()
 {
-    struct Stu stu1 = {0221111, "张三", 85};
-    struct Stu stu2 = {0222222, "李四", 90};
-    // 交换前
+    struct Stu s1 = {"0221111", "张三", 85};
+    struct Stu s2 = {"0221112", "李四", 74};
     printf("交换前：\n");
-    printf("第一个学生：学号：%d 姓名：%s 成绩：%lf\n", stu1.num, stu1.name, stu1.score);
-    printf("第二个学生：学号：%d 姓名：%s 成绩：%lf\n", stu2.num, stu2.name, stu2.score);
-    // 交换
-    swap(&stu1, &stu2);
-    // 交换后
+    printf("第一个学生：学号：%s 姓名：%s 成绩：%lf\n", s1.num, s1.name, s1.score);
+    printf("第二个学生：学号：%s 姓名：%s 成绩：%lf\n", s2.num, s2.name, s2.score);
+    swap(&s1, &s2);
     printf("交换后：\n");
-    printf("第一个学生：学号：%d 姓名：%s 成绩：%lf\n", stu1.num, stu1.name, stu1.score);
-    printf("第二个学生：学号：%d 姓名：%s 成绩：%lf\n", stu2.num, stu2.name, stu2.score);
+    printf("第一个学生：学号：%s 姓名：%s 成绩：%lf\n", s1.num, s1.name, s1.score);
+    printf("第二个学生：学号：%s 姓名：%s 成绩：%lf\n", s2.num, s2.name, s2.score);
+    return 0;
 }
