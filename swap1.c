@@ -1,53 +1,40 @@
 #include<stdio.h>
 
-struct Stu
+struct Student
 {
+    char num[20];
     char name[20];
-    int num;
     double score;
 };
 
-void swap1(struct Stu *p1, struct Stu *p2)
+void swap(struct Student *p1, struct Student *p2)
 {
-    struct Stu temp;
+    struct Student temp;
     temp = *p1;
     *p1 = *p2;
     *p2 = temp;
 }
 
-
-//根据结构体学生成绩排序
-void sort(struct Stu *p, int n)
+//根据成绩，对包含有n个学生的结构体数组进行排序
+void SortStu(struct Student *s, int n)
 {
     int i, j;
     for(i=0; i<n-1; i++)
     {
         for(j=0; j<n-1-i; j++)
         {
-            if(p[j].score < p[j+1].score)
-            {
-                swap1(&p[j], &p[j+1]);
-            }
+            if(s[j].score < s[j+1].score)
+                swap(&s[j], &s[j+1]);
         }
     }
 }
 
 int main()
 {
-    //交换两个结构体
-    struct Stu s1 = {"zhangsan", 1, 90.5};
-    struct Stu s2 = {"lisi", 2, 80.5};
-    printf("%s %s\n", s1.name,s2.name);
-    swap1(&s1, &s2);
-    printf("%s %s\n", s1.name,s2.name);
-
-    struct Stu s[3] = {{"zhangsan", 1, 90.5}, {"lisi", 2, 70.5}, {"wangwu", 3, 80.5}};
-
-    sort(s, 3);
-    int i;
-    for(i=0; i<3; i++)
-    {
-        printf("%s %d %lf\n", s[i].name, s[i].num, s[i].score);
-    }
+    
+    struct Student s[4] = {{"0221111", "张三", 85}, {"0221112", "李四", 74}, {"0221113", "王五", 90}, {"0221114", "赵六", 80}};
+    SortStu(s, 4);
+    for(int i=0; i<4; i++)
+        printf("%s %s %lf\n", s[i].num, s[i].name, s[i].score);
     return 0;
 }
